@@ -1,6 +1,6 @@
 # Mongodb Derive
 
-Please See [mongodb-ro](https://github.com/kak-smko/mongodb-ro-derive)
+Please See [mongodb-ro](https://github.com/kak-smko/mongodb-ro)
 
 
 ## License
