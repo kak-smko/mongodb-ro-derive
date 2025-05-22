@@ -3,7 +3,7 @@ use crate::collection::CollectionMeta;
 use proc_macro2::{Ident, TokenStream};
 use quote::quote;
 use syn::{ Path};
-const PROXY_MODEL_STRUCT_PATH: &str = "mongodb_orm::model::Model";
+const PROXY_MODEL_STRUCT_PATH: &str = "mongodb_ro::model::Model";
 pub fn impl_model(collection: &CollectionMeta) -> TokenStream {
     let ident = &collection.ident;
     let col_name = &collection.name;
