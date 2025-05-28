@@ -32,7 +32,7 @@ pub fn impl_model(collection: &CollectionMeta) -> TokenStream {
     let req=Ident::from_string(req).unwrap();
     quote! {
         impl #ident {
-            pub fn new_model<'a>(db: &std::sync::Arc<mongodb::Database>,req:Option< #req >) -> #model<'a , Self>{
+            pub fn new_model<'a>(db: &mongodb::Database,req:Option< #req >) -> #model<'a , Self>{
                 let model = #model::<Self>::new(db ,req , #col_name , #columns, #add_times);
                 model
             }
