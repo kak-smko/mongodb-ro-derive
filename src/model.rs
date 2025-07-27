@@ -8,7 +8,6 @@ pub fn impl_model(collection: &CollectionMeta) -> TokenStream {
     let ident = &collection.ident;
     let col_name = &collection.name;
     let add_times = &collection.add_times;
-    let req = &collection.req;
     let model = Path::from_string(PROXY_MODEL_STRUCT_PATH).unwrap();
     let mut columns = "{".to_string();
 
@@ -29,11 +28,11 @@ pub fn impl_model(collection: &CollectionMeta) -> TokenStream {
     let columns=columns.strip_suffix(",").unwrap();
     let columns=format!("{columns} }}");
 
-    let req=Ident::from_string(req).unwrap();
+
     quote! {
         impl #ident {
-            pub fn new_model<'a>(db: &mongodb::Database,req:Option< #req >) -> #model<'a , Self>{
-                let model = #model::<Self>::new(db ,req , #col_name , #columns, #add_times);
+            pub fn new_model<'a>(db: &mongodb::Database) -> #model<'a , Self>{
+                let model = #model::<Self>::new(db , #col_name , #columns, #add_times);
                 model
             }
         }

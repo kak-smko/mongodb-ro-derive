@@ -7,7 +7,6 @@ use structmeta::StructMeta;
 #[derive(Debug, Clone)]
 pub struct CollectionMeta {
     pub name: String,
-    pub req: String,
     pub add_times: bool,
     pub ident: Ident,
     pub columns: Vec<ColumnMeta>,
@@ -45,17 +44,11 @@ impl CollectionMeta {
         } else {
             true
         };
-        let req = if let Some(value) = attrs.iter().find_map(|a| a.req.as_ref()) {
-            value.value()
-        } else {
-            "bool".to_string()
-        };
 
         let columns = ColumnMeta::from_fields(ast.fields());
 
         Self {
             name,
-            req,
             add_times,
             ident: ident.clone(),
             columns,
